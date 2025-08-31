@@ -8,8 +8,6 @@ from Crypto.PublicKey import RSA
 from Crypto.Signature import pkcs1_15
 import random
 ip = os.popen('curl icanhazip.com').read()
-print(ip.replace(".",":"))
-exit()
 python_files = []
 rubpy_files = []
 for top in (os.curdir,):
